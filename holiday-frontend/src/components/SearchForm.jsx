@@ -7,7 +7,14 @@ const SearchForm = ({ country, setCountry, year, setYear, month, setMonth, holid
             className="border p-2 rounded">
             <option value="US">USA</option>
             <option value="IN">India</option>
-            <option value="GB">UK</option>
+            <option value="GB">United Kingdom</option>
+            <option value="CA">Canada</option>
+            <option value="AU">Australia</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="JP">Japan</option>
+            <option value="BR">Brazil</option>
+            <option value="ZA">South Africa</option>
           </select>
   
           {/* Year Selection */}
@@ -28,6 +35,7 @@ const SearchForm = ({ country, setCountry, year, setYear, month, setMonth, holid
             className="border p-2 rounded">
             <option value="">All Types</option>
             <option value="national">National</option>
+            <option value="local ">local </option>
             <option value="religious">Religious</option>
             <option value="observance">Observance</option>
           </select>
