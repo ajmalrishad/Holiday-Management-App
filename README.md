@@ -42,7 +42,7 @@ pip install -r requirements.txt
 ### **4. Set Up Environment Variables**
 Create a `.env` file inside the backend project and add your Calendarific API key:
 ```ini
-CALENDARIFIC_API_KEY=your_api_key_here
+CALENDARIFIC_API_KEY=Z5LbqI6Rrmqx3648nSCqjKXFXPpDzBXS
 ```
 
 ### **5. Apply Migrations & Run Server**
@@ -57,7 +57,7 @@ Backend will run at: **http://127.0.0.1:8000/**
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/api/holidays/` | `GET` | Fetch holidays for a given country and year (with caching). |
-| `/api/holidays/search/` | `GET` | Search for a holiday by name. |
+| `/api/search_holidays_by_name/` | `GET` | Search for a holiday by name. |
 
 ---
 
