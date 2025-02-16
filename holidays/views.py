@@ -7,7 +7,8 @@ from rest_framework.decorators import api_view
 # Load environment variables
 env = environ.Env()
 environ.Env.read_env()  # This loads the .env file
-CALENDARIFIC_API_KEY = env('API_KEY')
+CALENDARIFIC_API_KEY = env("API_KEY", default="") 
+
 
 
 BASE_URL = "https://calendarific.com/api/v2/holidays"
@@ -34,12 +35,13 @@ def get_holidays(request):
         return Response(data)
     return Response({"error": "Failed to fetch data"}, status=500)
 
-#custom api for search holiday by name
+#custom api for search holiday
 @api_view(['GET'])
 def search_holidays_by_names(request):
     country = request.GET.get('country')
     year = request.GET.get('year')
-    search_query = request.GET.get('type', '').lower()  # Search by holiday name (optional)
+    search_query = request.GET.get('type', '').lower()
+
     if not country or not year:
         return Response({"error": "Country and Year are required"}, status=400)
 
@@ -57,13 +59,12 @@ def search_holidays_by_names(request):
             return Response({"error": "Failed to fetch data"}, status=500)
 
         holidays_data = response.json()
-        cache.set(cache_key, holidays_data, timeout=86400)  # Cache for 24 hours
+        cache.set(cache_key, holidays_data, timeout=86400)
 
-    # Apply search filter if a query is provided
     if search_query:
         holidays_data["response"]["holidays"] = [
             holiday for holiday in holidays_data["response"]["holidays"]
-            if search_query in holiday["name"].lower()
+            if search_query in " ".join(holiday["type"]).lower()
         ]
 
     return Response(holidays_data)
