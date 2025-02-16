@@ -1,3 +1,32 @@
-env
+# Python & Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Virtual Environment
+venv/
+env/
+
+# Environment Variables
 .env
-__pycache__
+
+# Django Cache & Static Files
+staticfiles/
+media/
+cache/
+
+# Node.js (React)
+node_modules/
+*.log
+yarn.lock
+package-lock.json
+build/
+
+# VS Code & IDE files
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
